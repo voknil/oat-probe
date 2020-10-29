@@ -35,13 +35,23 @@ class QuestionGetActionTest extends WebTestCase
         $kernelBrowser->request(
             Request::METHOD_GET,
             '/questions',
-            [],
-            [],
-            [],
             ['lang' => 'en']
         );
 
         self::assertSame(Response::HTTP_OK, $kernelBrowser->getResponse()->getStatusCode());
+    }
+
+    public function testItReturns400WhenLanguageWrongSpecified(): void
+    {
+        $kernelBrowser = self::createClient();
+
+        $kernelBrowser->request(
+            Request::METHOD_GET,
+            '/questions',
+            ['lang' => 'english']
+        );
+
+        self::assertSame(Response::HTTP_BAD_REQUEST, $kernelBrowser->getResponse()->getStatusCode());
     }
 
     public function testItReturns400WhenLanguageNotSpecified(): void
