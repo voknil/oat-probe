@@ -26,8 +26,7 @@ final class QuestionRepositoryFactory
      */
     public function getReadRepositoryByType(string $type): QuestionReadRepository
     {
-        switch ($type)
-        {
+        switch ($type) {
             case 'json':
                 return $this->jsonRepository;
             case 'csv':

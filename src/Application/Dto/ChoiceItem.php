@@ -17,11 +17,4 @@ final class ChoiceItem
     {
         return $this->text;
     }
-
-    public function jsonSerialize()
-    {
-        return [
-            'text' => $this->getText(),
-        ];
-    }
 }

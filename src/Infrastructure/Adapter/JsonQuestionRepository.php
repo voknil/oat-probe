@@ -34,14 +34,12 @@ final class JsonQuestionRepository implements QuestionReadRepository
         $data = json_decode($this->getData(), true);
 
         return array_map(
-            fn(array $question): Question => $this->mapQuestion($question),
+            fn (array $question): Question => $this->mapQuestion($question),
             $data
         );
     }
 
-
     /**
-     * @return string
      * @throws FileDoesNotExist
      */
     private function getData(): string
@@ -61,12 +59,11 @@ final class JsonQuestionRepository implements QuestionReadRepository
 
     private function mapQuestion(array $data): Question
     {
-
         return new \App\Domain\Entity\Question(
             $this->propAccessor->getValue($data, '[text]'),
             $this->propAccessor->getValue($data, '[createdAt]'),
             array_map(
-                fn(array $choice): Choice => $this->mapChoice($choice),
+                fn (array $choice): Choice => $this->mapChoice($choice),
                 $this->propAccessor->getValue($data, '[choices]')
             )
         );

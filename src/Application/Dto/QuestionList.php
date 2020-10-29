@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Dto;
 
-final class QuestionList implements \JsonSerializable
+final class QuestionList
 {
     /**
      * @var QuestionItem[]
@@ -23,11 +23,6 @@ final class QuestionList implements \JsonSerializable
      * @return QuestionItem[]
      */
     public function getQuestionItems(): array
-    {
-        return $this->questionItems;
-    }
-
-    public function jsonSerialize()
     {
         return $this->questionItems;
     }

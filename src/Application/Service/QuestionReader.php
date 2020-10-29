@@ -7,10 +7,10 @@ namespace App\Application\Service;
 use App\Application\Dto\ChoiceItem;
 use App\Application\Dto\ChoiceList;
 use App\Application\Dto\QuestionItem;
+use App\Application\Dto\QuestionList;
 use App\Application\Exception\ValidationFailed;
 use App\Application\Query\GetQuestionList;
 use App\Application\Query\QuestionQuery;
-use App\Application\Dto\QuestionList;
 use App\Application\QuestionReadRepository;
 use App\Domain\Choice;
 use App\Domain\Question;
@@ -26,10 +26,12 @@ final class QuestionReader implements \App\Application\QuestionReader
 
     public function __construct(
         ValidatorInterface $validator,
-        QuestionReadRepository $repository
+        QuestionReadRepository $repository,
+        QuestionTranslator $translator
     ) {
         $this->validator = $validator;
         $this->repository = $repository;
+        $this->translator = $translator;
     }
 
     public function getQuestionList(GetQuestionList $query): QuestionList
@@ -64,7 +66,7 @@ final class QuestionReader implements \App\Application\QuestionReader
     {
         return new QuestionList(
             array_map(
-                fn(Question $question): QuestionItem => new QuestionItem(
+                fn (Question $question): QuestionItem => new QuestionItem(
                     $question->getText(),
                     $question->getCreatedAt(),
                     $this->mapChoiceList(
@@ -83,7 +85,7 @@ final class QuestionReader implements \App\Application\QuestionReader
     {
         return new ChoiceList(
             array_map(
-                fn(Choice $choice): ChoiceItem => new ChoiceItem(
+                fn (Choice $choice): ChoiceItem => new ChoiceItem(
                     $choice->getText(),
                 ),
                 $choices

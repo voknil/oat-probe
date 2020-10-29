@@ -6,5 +6,4 @@ namespace App\Infrastructure\Exception;
 
 final class RepositoryNotImplemented extends \Exception
 {
-
 }

@@ -23,9 +23,4 @@ final class ChoiceList
     {
         return $this->choiceItems;
     }
-
-    public function jsonSerialize()
-    {
-        return $this->choiceItems;
-    }
 }

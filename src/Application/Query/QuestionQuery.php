@@ -6,5 +6,4 @@ namespace App\Application\Query;
 
 abstract class QuestionQuery
 {
-
 }

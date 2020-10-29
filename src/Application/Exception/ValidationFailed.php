@@ -6,5 +6,4 @@ namespace App\Application\Exception;
 
 final class ValidationFailed extends \Exception
 {
-
 }

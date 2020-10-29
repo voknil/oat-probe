@@ -45,12 +45,11 @@ final class QuestionController
             return new Response(
                 json_encode(
                     [
-                        'errors' => $exception->getMessage()
+                        'errors' => $exception->getMessage(),
                     ]
                 )
             );
         }
-
     }
 
     /**

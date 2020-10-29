@@ -40,6 +40,7 @@ services:
         arguments:
             - '@validator'
             - '@App\Application\QuestionReadRepository'
+            - '@App\Application\Service\QuestionTranslator'
 
     App\Application\QuestionReadRepository:
         factory: [ '@App\Infrastructure\QuestionRepositoryFactory', getReadRepositoryByType ]

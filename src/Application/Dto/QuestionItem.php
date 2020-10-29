@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Application\Dto;
 
-use Symfony\Component\Serializer\Annotation\SerializedName;
-
 final class QuestionItem
 {
     private string $text;
@@ -34,14 +32,5 @@ final class QuestionItem
     public function getChoices(): ChoiceList
     {
         return $this->choices;
-    }
-
-    public function jsonSerialize()
-    {
-        return [
-            'text' => $this->getText(),
-            'createdAt' => $this->getCreatedAt(),
-            'choices' => $this->getChoices(),
-        ];
     }
 }

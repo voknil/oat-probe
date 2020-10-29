@@ -6,5 +6,4 @@ namespace App\Infrastructure\Exception;
 
 final class FileDoesNotExist extends \Exception
 {
-
 }
